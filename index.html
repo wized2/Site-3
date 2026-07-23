@@ -1,150 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bento Official</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#7251A4" />
+    <title>Bento Official · Singer</title>
+
+    <!-- Favicon (Replace the href with your favicon.svg path) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <!-- For browsers that support SVG favicon -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
     <style>
-        /* ── reset & base ── */
-        *,
-        *::before,
-        *::after {
+        /* =============================================
+                   MATERIAL YOU 3 DARK THEME
+                   ============================================= */
+        :root {
+            --md-primary: #7251A4;
+            --md-primary-light: #8B6FC9;
+            --md-primary-dark: #5A3D8A;
+            --md-secondary: #A78BFA;
+            --md-tertiary: #C4B5FD;
+            --md-surface: #0A0A0F;
+            --md-surface-container: #14141C;
+            --md-surface-high: #1E1E2A;
+            --md-on-surface: #F0EEF5;
+            --md-outline: #7251A4;
+            --md-shadow: rgba(114, 81, 164, 0.3);
+            --glass-bg: rgba(20, 20, 28, 0.65);
+            --glass-border: rgba(114, 81, 164, 0.15);
+            --glass-purple-tint: rgba(114, 81, 164, 0.08);
+            --neon-glow: 0 0 40px rgba(114, 81, 164, 0.2);
+            --frost-glow: 0 0 60px rgba(139, 111, 201, 0.15);
+            --glass-sheen: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 50%, rgba(255, 255, 255, 0.02) 100%);
+            --toggle-bg: #2A2A3A;
+            --toggle-border: #3A3A4A;
+        }
+        [data-theme="light"] {
+            --md-primary: #7251A4;
+            --md-primary-light: #8B6FC9;
+            --md-primary-dark: #5A3D8A;
+            --md-secondary: #A78BFA;
+            --md-tertiary: #C4B5FD;
+            --md-surface: #F8F6FC;
+            --md-surface-container: #FFFFFF;
+            --md-surface-high: #F0ECF5;
+            --md-on-surface: #1A1A2E;
+            --md-outline: #7251A4;
+            --md-shadow: rgba(114, 81, 164, 0.12);
+            --glass-bg: rgba(255, 255, 255, 0.72);
+            --glass-border: rgba(114, 81, 164, 0.15);
+            --glass-purple-tint: rgba(114, 81, 164, 0.06);
+            --neon-glow: 0 0 30px rgba(114, 81, 164, 0.12);
+            --frost-glow: 0 0 40px rgba(139, 111, 201, 0.12);
+            --glass-sheen: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+            --toggle-bg: #E8E4F0;
+            --toggle-border: #D0C8E0;
+        }
+
+        /* ===== Reset & Base ===== */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        html {
+            scroll-behavior: smooth;
+        }
         body {
+            font-family: 'Inter', sans-serif;
+            background: var(--md-surface);
+            color: var(--md-on-surface);
+            line-height: 1.6;
+            transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
             min-height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        input,
+        textarea,
+        [contenteditable="true"] {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        *:focus {
+            outline: none !important;
+        }
+        *:focus-visible {
+            outline: none !important;
+        }
+
+        /* ===== SINGLE CENTERED SVG BACKGROUND ===== */
+        .bg-svg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter', sans-serif;
-            background: #f5f0e8;
-            /* subtle warm base */
-            padding: 1.5rem;
-            position: relative;
-            overflow-x: hidden;
         }
-
-        /* ── animated background orbs ── */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.35;
-            pointer-events: none;
-            z-index: 0;
-            animation: orbFloat 18s ease-in-out infinite alternate;
+        .bg-svg-container svg {
+            width: 80vmin;
+            height: 80vmin;
+            animation: gentleSpin 30s linear infinite;
         }
-        .orb--1 {
-            width: 500px;
-            height: 500px;
-            top: -150px;
-            right: -100px;
-            background: #d8b356;
-            animation-delay: 0s;
-        }
-        .orb--2 {
-            width: 400px;
-            height: 400px;
-            bottom: -120px;
-            left: -80px;
-            background: #d8b356;
-            animation-delay: -6s;
-            opacity: 0.25;
-        }
-        .orb--3 {
-            width: 300px;
-            height: 300px;
-            top: 40%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #e8c87a;
-            animation-delay: -12s;
-            opacity: 0.15;
-            filter: blur(150px);
-        }
-
-        @keyframes orbFloat {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(30px, -40px) scale(1.1);
-            }
-            66% {
-                transform: translate(-20px, 30px) scale(0.9);
-            }
-            100% {
-                transform: translate(10px, -20px) scale(1.05);
-            }
-        }
-
-        /* ── main card ── */
-        .card {
-            position: relative;
-            z-index: 1;
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(24px) saturate(1.4);
-            -webkit-backdrop-filter: blur(24px) saturate(1.4);
-            border-radius: 3rem;
-            padding: 4rem 5rem;
-            max-width: 620px;
-            width: 100%;
-            text-align: center;
-            box-shadow:
-                0 30px 80px rgba(0, 0, 0, 0.08),
-                0 12px 32px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.4s ease;
-            animation: cardEntry 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        .card:hover {
-            transform: translateY(-6px) scale(1.01);
-            box-shadow:
-                0 50px 100px rgba(216, 179, 86, 0.15),
-                0 16px 40px rgba(0, 0, 0, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-
-        @keyframes cardEntry {
-            0% {
-                opacity: 0;
-                transform: scale(0.92) translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* ── decorative glow ring ── */
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 3rem;
-            padding: 2px;
-            background: conic-gradient(from 0deg,
-                    transparent,
-                    rgba(216, 179, 86, 0.25),
-                    rgba(216, 179, 86, 0.6),
-                    rgba(216, 179, 86, 0.25),
-                    transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            opacity: 0.6;
-            animation: borderSpin 10s linear infinite;
-        }
-
-        @keyframes borderSpin {
+        @keyframes gentleSpin {
             0% {
                 transform: rotate(0deg);
             }
@@ -152,277 +126,1096 @@
                 transform: rotate(360deg);
             }
         }
-
-        /* ── icon / emoji ring ── */
-        .icon-ring {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d8b356 0%, #f0dfb0 100%);
-            box-shadow:
-                0 8px 24px rgba(216, 179, 86, 0.35),
-                inset 0 2px 0 rgba(255, 255, 255, 0.5);
-            margin-bottom: 1.5rem;
-            font-size: 2.8rem;
-            animation: iconPulse 2.8s ease-in-out infinite;
-            transition: transform 0.3s ease;
+        .shape-group {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        .shape-group.active {
+            opacity: 0.35;
         }
 
-        .card:hover .icon-ring {
-            transform: scale(1.06) rotate(-4deg);
-        }
-
-        @keyframes iconPulse {
-            0%,
-            100% {
-                box-shadow: 0 8px 24px rgba(216, 179, 86, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.5);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 12px 48px rgba(216, 179, 86, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.7);
-                transform: scale(1.04);
-            }
-        }
-
-        /* ── main text ── */
-        .card h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: #1e1a14;
-            margin-bottom: 0.4rem;
-            background: linear-gradient(135deg, #1e1a14 40%, #d8b356 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .card .sub {
-            font-size: 1.05rem;
-            font-weight: 400;
-            color: rgba(30, 26, 20, 0.55);
-            letter-spacing: 0.02em;
-            margin-top: 0.25rem;
-            font-style: italic;
-            border-top: 1px solid rgba(216, 179, 86, 0.2);
-            padding-top: 1rem;
-            display: inline-block;
-        }
-
-        /* ── loading dots ── */
-        .dots {
-            display: inline-flex;
-            gap: 8px;
-            margin-top: 1.4rem;
-            align-items: center;
-            justify-content: center;
-        }
-        .dots span {
-            display: block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #d8b356;
-            animation: dotBounce 1.4s ease-in-out infinite both;
-            box-shadow: 0 2px 8px rgba(216, 179, 86, 0.3);
-        }
-        .dots span:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-        .dots span:nth-child(2) {
-            animation-delay: -0.16s;
-        }
-        .dots span:nth-child(3) {
-            animation-delay: 0s;
-        }
-
-        @keyframes dotBounce {
-            0%,
-            80%,
-            100% {
-                transform: scale(0.6);
-                opacity: 0.4;
-            }
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* ── progress bar ── */
-        .progress-track {
+        /* ===== Canvas Particles ===== */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 4px;
-            background: rgba(216, 179, 86, 0.18);
-            border-radius: 4px;
-            margin-top: 2rem;
-            overflow: hidden;
-            position: relative;
-        }
-        .progress-track .bar {
             height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #d8b356, #f0dfb0, #d8b356);
-            border-radius: 4px;
-            animation: progressFill 3.6s ease-in-out infinite;
-            box-shadow: 0 0 12px rgba(216, 179, 86, 0.3);
-        }
-
-        @keyframes progressFill {
-            0% {
-                width: 0%;
-                transform: translateX(0);
-            }
-            50% {
-                width: 72%;
-                transform: translateX(0);
-            }
-            100% {
-                width: 100%;
-                transform: translateX(0);
-            }
-        }
-
-        /* ── shimmer overlay (subtle) ── */
-        .shimmer {
-            position: absolute;
-            inset: 0;
-            border-radius: 3rem;
-            overflow: hidden;
+            z-index: -1;
             pointer-events: none;
-            opacity: 0.15;
         }
-        .shimmer::after {
+
+        /* ===== Glass ===== */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px) saturate(1.2);
+            -webkit-backdrop-filter: blur(16px) saturate(1.2);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(105deg,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0.5) 50%,
-                    transparent 70%);
-            background-size: 200% 100%;
-            animation: shimmerSlide 5s ease-in-out infinite;
+            background: var(--glass-sheen);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glass>* {
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes shimmerSlide {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== Header ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px) saturate(1.2);
+            -webkit-backdrop-filter: blur(16px) saturate(1.2);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 12px 24px;
+            transition: background 0.4s;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--glass-sheen);
+            pointer-events: none;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--md-on-surface);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+        .logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--md-primary);
+            /* Replace this SVG with your favicon.svg if you want */
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .nav-links a {
+            color: var(--md-on-surface);
+            opacity: 0.7;
+            transition: opacity 0.3s, border-bottom 0.3s, transform 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            display: inline-block;
+        }
+        .nav-links a:hover {
+            opacity: 1;
+            border-bottom-color: var(--md-primary);
+            transform: translateY(-1px);
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 9999px;
+            border: 1px solid var(--toggle-border);
+            background: var(--toggle-bg);
+            padding: 2px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s, transform 0.2s;
+        }
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+        .theme-toggle svg {
+            width: 28px;
+            height: 28px;
+            padding: 4px;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+        }
+        .theme-toggle .sun-icon,
+        .theme-toggle .moon-icon {
+            color: var(--md-on-surface);
+            opacity: 0.4;
+        }
+        .theme-toggle .active {
+            background: var(--md-primary);
+            color: #fff;
+            opacity: 1;
+            box-shadow: 0 0 12px rgba(114, 81, 164, 0.3);
+        }
+        [data-theme="light"] .theme-toggle .active {
+            background: var(--md-primary);
+            color: #fff;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 8px 14px;
+            font-size: 1.8rem;
+            color: var(--md-on-surface);
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+            line-height: 1;
+        }
+        .nav-toggle:hover {
+            background: var(--md-primary);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(114, 81, 164, 0.3);
+        }
+        .nav-toggle:active {
+            transform: scale(0.92);
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1.2rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--glass-bg);
+                backdrop-filter: blur(16px);
+                padding: 2rem 24px;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
+            }
+        }
+
+        /* ===== Side Menu (Mobile) ===== */
+        .side-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .side-menu-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .side-menu-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 380px;
+            height: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-left: 1px solid var(--glass-border);
+            box-shadow: -6px 0 32px rgba(0, 0, 0, 0.3);
+            z-index: 51;
+            padding: 1.5rem 1.75rem 2rem;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow-y: auto;
+        }
+        .side-menu-panel.open {
+            transform: translateX(0);
+        }
+        .side-menu-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .side-menu-close {
+            font-size: 1.4rem;
+            color: var(--md-muted);
+            transition: color 0.2s, transform 0.2s;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .side-menu-close:hover {
+            color: var(--md-on-surface);
+            background: var(--md-surface-container);
+            transform: rotate(90deg);
+        }
+        .side-menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex: 1;
+        }
+        .side-menu-content a {
+            font-size: 1.05rem;
+            font-weight: 500;
+            padding: 0.65rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+            color: var(--md-on-surface);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        .side-menu-content a:hover {
+            background: var(--md-surface-container);
+            color: var(--md-primary);
+        }
+        .side-menu-content a i {
+            width: 1.5rem;
+            text-align: center;
+            color: var(--md-muted);
+            font-size: 1rem;
+        }
+        .side-menu-content a:hover i {
+            color: var(--md-primary);
+        }
+        .side-menu-footer {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .side-menu-social {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .side-menu-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            color: var(--md-muted);
+            font-size: 1.1rem;
+            transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+            background: transparent;
+            text-decoration: none;
+        }
+        .side-menu-social a:hover {
+            background: var(--md-primary);
+            color: #fff;
+            border-color: var(--md-primary);
+            transform: translateY(-2px);
+        }
+        .side-menu-theme {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--md-muted);
+        }
+
+        /* ===== Floating Ornaments ===== */
+        .ornament {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.06;
+            animation: floatOrnament 20s infinite alternate ease-in-out;
+            color: var(--md-primary);
+        }
+        .ornament:nth-child(1) {
+            top: 5%;
+            left: 3%;
+            width: 120px;
+            height: 120px;
+            animation-delay: 0s;
+        }
+        .ornament:nth-child(2) {
+            bottom: 10%;
+            right: 2%;
+            width: 140px;
+            height: 140px;
+            animation-delay: -6s;
+        }
+        .ornament:nth-child(3) {
+            top: 60%;
+            left: 85%;
+            width: 100px;
+            height: 100px;
+            animation-delay: -12s;
+        }
+        .ornament svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+        @keyframes floatOrnament {
             0% {
-                background-position: 200% 0;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            33% {
+                transform: translate(20px, -30px) scale(1.1) rotate(10deg);
+            }
+            66% {
+                transform: translate(-15px, 20px) scale(0.9) rotate(-8deg);
             }
             100% {
-                background-position: -200% 0;
+                transform: translate(10px, 10px) scale(1.05) rotate(5deg);
             }
         }
 
-        /* ── small badge ── */
-        .badge {
-            display: inline-block;
-            margin-top: 1.6rem;
-            padding: 0.3rem 1.2rem;
-            border-radius: 100px;
-            background: rgba(216, 179, 86, 0.12);
-            border: 1px solid rgba(216, 179, 86, 0.15);
+        /* ===== Hero ===== */
+        .hero {
+            padding: 150px 0 40px;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3rem, 9vw, 5.4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--md-primary) 0%, var(--md-secondary) 50%, var(--md-tertiary) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        .hero .subhead {
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            font-weight: 400;
+            color: var(--md-on-surface);
+            opacity: 0.75;
+            margin-bottom: 0.3rem;
+        }
+        .hero .tagline {
+            font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+            font-weight: 400;
+            color: var(--md-on-surface);
+            opacity: 0.7;
+            max-width: 500px;
+            margin: 0.5rem auto 2rem;
+            line-height: 1.6;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--md-primary), var(--md-secondary));
+            color: #fff;
+            font-weight: 700;
+            padding: 0.9rem 2.4rem;
+            border-radius: 60px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 1rem;
+            box-shadow: 0 4px 24px rgba(114, 81, 164, 0.25);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+        .btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(114, 81, 164, 0.35);
+        }
+        .btn:active {
+            transform: scale(0.96);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--glass-border);
+            color: var(--md-on-surface);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--glass-bg);
+            border-color: var(--md-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--frost-glow);
+        }
+
+        .social-inline {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+        }
+        .social-inline .label {
             font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: #8a7233;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s ease;
+            letter-spacing: 0.08em;
+            color: var(--md-on-surface);
+            opacity: 0.6;
+            font-weight: 600;
+        }
+        .social-icons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            color: var(--md-on-surface);
+            opacity: 0.7;
+            font-size: 1.3rem;
+            transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s, opacity 0.2s;
+            background: transparent;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            background: var(--md-primary);
+            color: #fff;
+            border-color: var(--md-primary);
+            transform: translateY(-3px);
+            opacity: 1;
         }
 
-        .card:hover .badge {
-            background: rgba(216, 179, 86, 0.2);
-            border-color: rgba(216, 179, 86, 0.3);
-            transform: scale(1.02);
+        /* ===== Top Songs Section ===== */
+        #songs {
+            padding: 40px 0 80px;
+            position: relative;
+            z-index: 2;
+        }
+        .songs-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .song-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 16px;
+            transition: background 0.2s;
+            cursor: default;
+        }
+        .song-item:hover {
+            background: var(--md-surface-container);
+        }
+        .song-item .art {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .song-item .info {
+            flex: 1;
+        }
+        .song-item .info .title {
+            font-weight: 600;
+        }
+        .song-item .info .sub {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        .song-item .play-icon {
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        .song-item:hover .play-icon {
+            opacity: 1;
         }
 
-        /* ── responsive ── */
-        @media (max-width: 600px) {
-            .card {
-                padding: 2.8rem 2rem;
-                border-radius: 2.2rem;
-            }
-            .card h1 {
-                font-size: 2.4rem;
-            }
-            .icon-ring {
-                width: 64px;
-                height: 64px;
-                font-size: 2.2rem;
-            }
-            .card .sub {
-                font-size: 0.95rem;
-            }
-            .orb--1 {
-                width: 300px;
-                height: 300px;
-                top: -80px;
-                right: -60px;
-            }
-            .orb--2 {
-                width: 250px;
-                height: 250px;
-                bottom: -80px;
-                left: -50px;
-            }
+        /* ===== Footer ===== */
+        footer {
+            background: var(--md-surface-container);
+            border-top: 1px solid var(--glass-border);
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+        }
+        footer a {
+            color: var(--md-primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: var(--md-secondary);
         }
 
-        @media (max-width: 400px) {
-            .card {
-                padding: 2rem 1.25rem;
-                border-radius: 1.8rem;
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--md-surface-container);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--md-primary), var(--md-secondary));
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            opacity: 0.8;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.6rem;
             }
-            .card h1 {
-                font-size: 1.9rem;
+            .social-icons a {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
             }
-            .icon-ring {
-                width: 54px;
-                height: 54px;
-                font-size: 1.8rem;
+            .side-menu-panel {
+                width: 90%;
+                padding: 1.25rem 1.25rem 1.5rem;
+            }
+            .bg-svg-container svg {
+                width: 90vmin;
+                height: 90vmin;
+            }
+            .song-item .art {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- background orbs -->
-    <div class="orb orb--1"></div>
-    <div class="orb orb--2"></div>
-    <div class="orb orb--3"></div>
-
-    <!-- card -->
-    <div class="card">
-        <!-- shimmer -->
-        <div class="shimmer"></div>
-
-        <!-- icon -->
-        <div class="icon-ring">⚡</div>
-
-        <!-- headline -->
-        <h1>I'm working on it</h1>
-
-        <!-- subtext -->
-        <div class="sub">Building something great &bull; stay tuned</div>
-
-        <!-- loading dots -->
-        <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <!-- progress bar -->
-        <div class="progress-track">
-            <div class="bar"></div>
-        </div>
-
-        <!-- badge -->
-        <div class="badge">✨ in progress</div>
+    <!-- ===== SINGLE CENTERED SVG WITH 5 SHAPES ===== -->
+    <div class="bg-svg-container">
+        <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shape 1: Circle with star-cutout -->
+            <g class="shape-group active" data-shape="0">
+                <g transform="translate(500,500) scale(0.3425) translate(-659,-659)">
+                    <ellipse cx="659" cy="659" rx="659" ry="659" fill="#E0AAFF" />
+                    <path d="M573.12,1190.3 C555.61,1201.41 534.25,1204.68 514.23,1199.31 C494.2,1193.94 477.34,1180.44 467.73,1162.06 L442.39,1113.6 C429.09,1088.17 402.29,1072.7 373.61,1073.89 L318.97,1076.18 C298.26,1077.04 278.13,1069.19 263.47,1054.53 C248.81,1039.87 240.96,1019.74 241.83,999.03 L244.11,944.39 C245.31,915.71 229.84,888.92 204.4,875.62 L155.94,850.27 C137.57,840.67 124.06,823.8 118.69,803.78 C113.33,783.75 116.6,762.39 127.7,744.89 L157,698.71 C172.38,674.47 172.38,643.53 157,619.3 L127.7,573.12 C116.6,555.61 113.33,534.25 118.69,514.23 C124.06,494.2 137.57,477.34 155.94,467.73 L204.4,442.39 C229.84,429.09 245.31,402.29 244.11,373.61 L241.83,318.97 C240.96,298.26 248.81,278.13 263.47,263.47 C278.13,248.81 298.26,240.96 318.97,241.83 L373.61,244.11 C402.29,245.31 429.09,229.84 442.39,204.4 L467.73,155.94 C477.34,137.57 494.2,124.06 514.23,118.69 C534.25,113.33 555.61,116.6 573.12,127.7 L619.3,157 C643.53,172.38 674.47,172.38 698.71,157 L744.89,127.7 C762.39,116.6 783.75,113.33 803.78,118.69 C823.8,124.06 840.67,137.57 850.27,155.94 L875.62,204.4 C888.92,229.84 915.71,245.31 944.39,244.11 L999.03,241.83 C1019.74,240.96 1039.87,248.81 1054.53,263.47 C1069.19,278.13 1077.04,298.26 1076.18,318.97 L1073.89,373.61 C1072.7,402.29 1088.17,429.09 1113.6,442.39 L1162.06,467.73 C1180.44,477.34 1193.94,494.2 1199.31,514.23 C1204.68,534.25 1201.41,555.61 1190.3,573.12 L1161,619.3 C1145.63,643.53 1145.63,674.47 1161,698.71 L1190.3,744.89 C1201.41,762.39 1204.68,783.75 1199.31,803.78 C1193.94,823.8 1180.44,840.67 1162.06,850.27 L1113.6,875.62 C1088.17,888.92 1072.7,915.71 1073.89,944.39 L1076.18,999.03 C1077.04,1019.74 1069.19,1039.87 1054.53,1054.53 C1039.87,1069.19 1019.74,1077.04 999.03,1076.18 L944.39,1073.89 C915.71,1072.7 888.92,1088.17 875.62,1113.6 L850.27,1162.06 C840.67,1180.44 823.8,1193.94 803.78,1199.31 C783.75,1204.68 762.39,1201.41 744.89,1190.3 L698.71,1161 C674.47,1145.63 643.53,1145.63 619.3,1161 L573.12,1190.3 Z" fill-rule="evenodd" fill="#9D4EDD" />
+                </g>
+            </g>
+            <!-- Shape 2: Rounded square -->
+            <g class="shape-group" data-shape="1">
+                <g transform="translate(500,500) scale(0.5609) translate(-402.68,-402.68)">
+                    <path d="M160.79,796.98 C117.24,814.4 67.51,804.19 34.34,771.03 C1.18,737.87 -9.03,688.13 8.39,644.59 L87.73,446.23 C98.91,418.28 98.91,387.1 87.73,359.14 L8.39,160.79 C-9.03,117.24 1.18,67.51 34.34,34.34 C67.51,1.18 117.24,-9.03 160.79,8.39 L359.14,87.73 C387.1,98.91 418.28,98.91 446.23,87.73 L644.59,8.39 C688.13,-9.03 737.87,1.18 771.03,34.34 C804.19,67.51 814.4,117.24 796.98,160.79 L717.64,359.14 C706.46,387.1 706.46,418.28 717.64,446.23 L796.98,644.59 C814.4,688.13 804.19,737.87 771.03,771.03 C737.87,804.19 688.13,814.4 644.59,796.98 L446.23,717.64 C418.28,706.46 387.1,706.46 359.14,717.64 L160.79,796.98 Z" fill-rule="evenodd" fill="#9D4EDD" />
+                </g>
+            </g>
+            <!-- Shape 3: Octagon -->
+            <g class="shape-group" data-shape="2">
+                <g transform="translate(500,500) scale(0.6069) translate(-372.045,-335.75)">
+                    <path d="M294.16,653.5 C262.01,675.77 219.9,677.51 186.02,657.95 C152.15,638.39 132.6,601.06 135.81,562.08 L137.84,537.46 C141.31,495.46 118.36,455.72 80.26,437.72 L57.92,427.17 C22.56,410.47 -0,374.86 -0,335.75 C-0,296.64 22.56,261.03 57.92,244.33 L80.26,233.77 C118.36,215.78 141.31,176.04 137.84,134.04 L135.81,109.42 C132.6,70.44 152.15,33.1 186.02,13.55 C219.9,-6.01 262.01,-4.28 294.16,18 L314.47,32.07 C349.1,56.06 394.99,56.06 429.63,32.07 L449.93,18 C482.08,-4.28 524.2,-6.01 558.07,13.55 C591.94,33.1 611.5,70.44 608.28,109.42 L606.25,134.04 C602.79,176.04 625.73,215.78 663.83,233.77 L686.17,244.33 C721.54,261.03 744.09,296.64 744.09,335.75 C744.09,374.86 721.54,410.47 686.17,427.17 L663.83,437.72 C625.73,455.72 602.79,495.46 606.25,537.46 L608.28,562.08 C611.5,601.06 591.94,638.39 558.07,657.95 C524.2,677.51 482.08,675.77 449.93,653.5 L429.63,639.43 C394.99,615.43 349.1,615.43 314.47,639.43 L294.16,653.5 Z" fill-rule="evenodd" fill="#9D4EDD" />
+                </g>
+            </g>
+            <!-- Shape 4: Large rounded -->
+            <g class="shape-group" data-shape="3">
+                <g transform="translate(500,500) scale(0.2320) translate(-973.355,-943.795)">
+                    <path d="M715.92,1868.94 C603.05,1906.23 479.13,1886.91 382.96,1817.04 C286.8,1747.17 230.13,1635.29 230.71,1516.42 L231.44,1367.32 C231.83,1288.08 206.73,1210.82 159.84,1146.95 L71.61,1026.75 C1.27,930.92 -18.65,807.1 18.08,694.05 C54.81,581 143.71,492.53 256.94,456.35 L398.97,410.97 C474.45,386.85 540.17,339.1 586.43,274.77 L673.48,153.72 C742.88,57.21 854.49,0 973.36,0 C1092.23,0 1203.83,57.21 1273.23,153.72 L1360.28,274.77 C1406.54,339.1 1472.26,386.85 1547.74,410.97 L1689.77,456.35 C1803,492.53 1891.9,581 1928.63,694.05 C1965.37,807.1 1945.44,930.92 1875.1,1026.75 L1786.87,1146.95 C1739.99,1210.82 1714.89,1288.08 1715.27,1367.32 L1716,1516.42 C1716.58,1635.29 1659.92,1747.17 1563.75,1817.04 C1467.58,1886.91 1343.66,1906.23 1230.79,1868.94 L1089.21,1822.18 C1013.97,1797.32 932.74,1797.32 857.5,1822.18 L715.92,1868.94 Z" fill-rule="evenodd" fill="#9D4EDD" />
+                </g>
+            </g>
+            <!-- Shape 5: Squircle -->
+            <g class="shape-group" data-shape="4">
+                <g transform="translate(500,500) scale(0.35) translate(-645.265,-645.265)">
+                    <path d="M508.41,1261.46 C473.24,1291.19 424.41,1298.79 381.87,1281.16 C339.33,1263.54 310.18,1223.64 306.32,1177.76 L300.03,1102.85 C295,1043.01 247.52,995.54 187.68,990.51 L112.78,984.21 C66.89,980.36 26.99,951.21 9.37,908.66 C-8.25,866.12 -0.65,817.3 29.07,782.12 L77.59,724.71 C116.34,678.84 116.34,611.7 77.59,565.83 L29.07,508.41 C-0.65,473.24 -8.25,424.41 9.37,381.87 C26.99,339.33 66.89,310.18 112.78,306.32 L187.68,300.03 C247.52,295 295,247.52 300.03,187.68 L306.32,112.78 C310.18,66.89 339.33,26.99 381.87,9.37 C424.41,-8.25 473.24,-0.65 508.41,29.07 L565.83,77.59 C611.7,116.34 678.84,116.34 724.71,77.59 L782.12,29.07 C817.3,-0.65 866.12,-8.25 908.66,9.37 C951.21,26.99 980.36,66.89 984.21,112.78 L990.51,187.68 C995.53,247.52 1043.01,295 1102.85,300.03 L1177.76,306.32 C1223.64,310.18 1263.54,339.33 1281.16,381.87 C1298.79,424.41 1291.19,473.24 1261.46,508.41 L1212.95,565.83 C1174.19,611.7 1174.19,678.84 1212.95,724.71 L1261.46,782.12 C1291.19,817.3 1298.79,866.12 1281.16,908.66 C1263.54,951.21 1223.64,980.36 1177.76,984.21 L1102.85,990.51 C1043.01,995.54 995.53,1043.01 990.51,1102.85 L984.21,1177.76 C980.36,1223.64 951.21,1263.54 908.66,1281.16 C866.12,1298.79 817.3,1291.19 782.12,1261.46 L724.71,1212.95 C678.84,1174.19 611.7,1174.19 565.83,1212.95 L508.41,1261.46 Z" fill-rule="evenodd" fill="#9D4EDD" />
+                </g>
+            </g>
+        </svg>
     </div>
 
+    <!-- ===== CANVAS PARTICLES ===== -->
+    <canvas id="particles"></canvas>
+
+    <!-- ===== FLOATING ORNAMENTS ===== -->
+    <div class="ornament">
+        <svg viewBox="0 0 100 100"><path d="M87.14,87.08C81.05,93.18 71.59,95.91 62.20,91.86C60.84,91.27 59.48,90.69 58.12,90.10C52.95,87.87 47.09,87.87 41.92,90.11C40.58,90.70 39.23,91.28 37.89,91.86C19.11,100.00 0.05,80.97 8.16,62.18C8.74,60.82 9.33,59.46 9.92,58.10C12.15,52.93 12.14,47.07 9.90,41.90C9.32,40.56 8.74,39.21 8.16,37.87C0.02,19.09 19.04,0.03 37.83,8.14C39.19,8.73 40.55,9.31 41.91,9.90C47.08,12.13 52.95,12.13 58.11,9.89C59.46,9.30 60.80,8.72 62.15,8.14C80.93,0.00 99.98,19.03 91.88,37.82C91.29,39.18 90.70,40.54 90.12,41.90C87.88,47.07 87.89,52.93 90.13,58.10C90.71,59.44 91.29,60.79 91.88,62.13C95.95,71.52 93.22,80.98 87.14,87.08Z" /></svg>
+    </div>
+    <div class="ornament">
+        <svg viewBox="0 0 100 100"><path d="M99.69,50.00C99.69,51.79 99.07,53.59 97.83,55.04C95.30,58.01 92.77,60.98 90.24,63.95C89.18,65.19 88.54,66.74 88.41,68.37C88.10,72.26 87.79,76.15 87.48,80.04C87.18,83.84 84.15,86.87 80.35,87.17C76.46,87.48 72.57,87.79 68.68,88.10C67.05,88.23 65.50,88.87 64.26,89.93C61.29,92.46 58.32,94.99 55.35,97.52C52.45,100.00 48.17,100.00 45.27,97.52C42.30,94.99 39.33,92.46 36.36,89.93C35.11,88.87 33.57,88.23 31.94,88.10C28.05,87.79 24.16,87.48 20.27,87.17C16.46,86.87 13.44,83.84 13.14,80.04C12.83,76.15 12.52,72.26 12.21,68.37C12.08,66.74 11.44,65.19 10.38,63.95C7.85,60.98 5.32,58.01 2.79,55.04C0.31,52.14 0.31,47.86 2.79,44.96C5.32,41.99 7.85,39.02 10.38,36.05C11.44,34.81 12.08,33.26 12.21,31.63C12.52,27.74 12.83,23.85 13.14,19.96C13.44,16.16 16.46,13.13 20.27,12.83C24.16,12.52 28.05,12.21 31.94,11.90C33.57,11.77 35.11,11.13 36.36,10.07C39.33,7.54 42.30,5.01 45.27,2.48C48.17,0.00 52.45,0.00 55.35,2.48C58.32,5.01 61.29,7.54 64.26,10.07C65.50,11.13 67.05,11.77 68.68,11.90C72.57,12.21 76.46,12.52 80.35,12.83C84.15,13.13 87.18,16.16 87.48,19.96C87.79,23.85 88.10,27.74 88.41,31.63C88.54,33.26 89.18,34.81 90.24,36.05C92.77,39.02 95.30,41.99 97.83,44.96C99.07,46.41 99.69,48.21 99.69,50.00Z" /></svg>
+    </div>
+    <div class="ornament">
+        <svg viewBox="0 0 100 100"><path d="M50.00,100.00C47.27,100.00 44.54,99.26 42.13,97.77C39.80,96.33 37.17,92.93 31.91,86.11C25.20,77.41 18.49,68.71 11.77,60.02C7.39,54.33 7.39,46.41 11.77,40.73C18.49,32.03 25.20,23.33 31.91,14.63C37.17,7.82 39.80,4.41 42.13,2.98C46.95,0.00 53.05,0.00 57.87,2.98C60.20,4.41 62.83,7.82 68.09,14.63C74.80,23.33 81.51,32.03 88.23,40.73C92.61,46.41 92.61,54.33 88.23,60.02C81.51,68.71 74.80,77.41 68.09,86.11C62.83,92.93 60.20,96.33 57.87,97.77C55.46,99.26 52.73,100.00 50.00,100.00Z" /></svg>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="nav">
+            <a href="#" class="logo">
+                <!-- Replace this SVG with your favicon.svg or keep it as a music note -->
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+                </svg>
+                Bento Official
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Home</a></li>
+                <li><a href="#songs">Music</a></li>
+                <li><a href="#">Tour</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon active" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <path d="M12 1v2" />
+                        <path d="M12 21v2" />
+                        <path d="M4.22 4.22l1.42 1.42" />
+                        <path d="M18.36 18.36l1.42 1.42" />
+                        <path d="M1 12h2" />
+                        <path d="M21 12h2" />
+                        <path d="M4.22 19.78l1.42-1.42" />
+                        <path d="M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== SIDE MENU (MOBILE) ===== -->
+    <div class="side-menu-overlay" id="sideOverlay"></div>
+    <div class="side-menu-panel" id="sidePanel">
+        <div class="side-menu-header">
+            <button class="side-menu-close" id="sideMenuClose" aria-label="Close menu">
+                <span class="material-symbols-rounded">close</span>
+            </button>
+        </div>
+        <div class="side-menu-content">
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#songs"><i class="fas fa-music"></i> Music</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Tour</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="side-menu-footer">
+            <div class="side-menu-social">
+                <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                <a href="#" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="side-menu-theme">
+                <span><span class="material-symbols-rounded" style="font-size:1.2rem; vertical-align:middle;">palette</span> Theme</span>
+                <button class="theme-toggle" id="sideThemeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon active" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <path d="M12 1v2" />
+                        <path d="M12 21v2" />
+                        <path d="M4.22 4.22l1.42 1.42" />
+                        <path d="M18.36 18.36l1.42 1.42" />
+                        <path d="M1 12h2" />
+                        <path d="M21 12h2" />
+                        <path d="M4.22 19.78l1.42-1.42" />
+                        <path d="M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content" style="max-width:720px; margin:0 auto;">
+                <div class="hero-badge" style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--md-primary); color:#fff; padding:0.35rem 1.2rem; border-radius:9999px; font-size:0.8rem; font-weight:600; margin-bottom:1.5rem; letter-spacing:0.01em; backdrop-filter:blur(4px);">
+                    <i class="fas fa-microphone-alt"></i> Singer · Songwriter
+                </div>
+                <h1>Bento <span class="highlight">Official</span></h1>
+                <p class="subhead">— voice of a new generation —</p>
+                <p class="tagline">
+                    Blending soul, pop, and electronic textures into a sound that feels both timeless and fresh.
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn"><i class="fas fa-play"></i> Listen Now</a>
+                    <a href="#" class="btn btn-outline"><i class="fas fa-calendar-alt"></i> Book Show</a>
+                </div>
+                <div class="social-inline">
+                    <span class="label">Connect</span>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                        <a href="#" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TOP SONGS SECTION ===== -->
+    <section id="songs">
+        <div class="container">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.8rem); text-align: center; margin-bottom: 2.5rem;">
+                Top Songs
+            </h2>
+            <div class="songs-grid">
+                <!-- Song 1 -->
+                <div class="song-item">
+                    <div class="art" style="background: linear-gradient(135deg, #6C3A8C, #A78BFA);">
+                        <i class="fas fa-music" style="opacity: 0.8;"></i>
+                    </div>
+                    <div class="info">
+                        <div class="title">Take it down</div>
+                        <div class="sub">Single • Bento official</div>
+                    </div>
+                    <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <!-- Song 2 -->
+                <div class="song-item">
+                    <div class="art" style="background: linear-gradient(135deg, #2D4A8C, #6C3A8C);">
+                        <i class="fas fa-music" style="opacity: 0.8;"></i>
+                    </div>
+                    <div class="info">
+                        <div class="title">Am Looking For You</div>
+                        <div class="sub">Single • Bento official</div>
+                    </div>
+                    <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <!-- Song 3 (Bento official Artist page representation) -->
+                <div class="song-item">
+                    <div class="art" style="background: linear-gradient(135deg, #8C2D4A, #A78BFA);">
+                        <i class="fas fa-user" style="opacity: 0.8;"></i>
+                    </div>
+                    <div class="info">
+                        <div class="title">Bento official</div>
+                        <div class="sub">Artist</div>
+                    </div>
+                    <div class="play-icon"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <!-- Song 4 (Repeat of Take it down as Song, keeping it unique) -->
+                <div class="song-item">
+                    <div class="art" style="background: linear-gradient(135deg, #4A8C6C, #A78BFA);">
+                        <i class="fas fa-headphones" style="opacity: 0.8;"></i>
+                    </div>
+                    <div class="info">
+                        <div class="title">Take it down</div>
+                        <div class="sub">Song • Bento official</div>
+                    </div>
+                    <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Bento Official · Built with ❤️ · <a href="#">Privacy</a></p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+           JAVASCRIPT
+           ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // --- Theme toggle (segmented) ---
+            const html = document.documentElement;
+            const toggleBtns = document.querySelectorAll('.theme-toggle');
+
+            function setTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('bento-theme', theme);
+                toggleBtns.forEach(toggle => {
+                    const sun = toggle.querySelector('.sun-icon');
+                    const moon = toggle.querySelector('.moon-icon');
+                    if (theme === 'dark') {
+                        sun.classList.remove('active');
+                        moon.classList.add('active');
+                    } else {
+                        sun.classList.add('active');
+                        moon.classList.remove('active');
+                    }
+                });
+            }
+
+            const saved = localStorage.getItem('bento-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const current = html.getAttribute('data-theme');
+                    setTheme(current === 'dark' ? 'light' : 'dark');
+                });
+            });
+
+            // --- Mobile nav toggle ---
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('open');
+                    navToggle.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+                });
+            }
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    if (navToggle) navToggle.textContent = '☰';
+                });
+            });
+
+            // --- Side Menu ---
+            const overlay = document.getElementById('sideOverlay');
+            const panel = document.getElementById('sidePanel');
+            const menuToggle = document.getElementById('navToggle');
+            const closeBtn = document.getElementById('sideMenuClose');
+
+            function openMenu() {
+                overlay.classList.add('open');
+                panel.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                overlay.classList.remove('open');
+                panel.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            if (menuToggle && overlay && panel && closeBtn) {
+                menuToggle.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        if (panel.classList.contains('open')) {
+                            closeMenu();
+                        } else {
+                            openMenu();
+                        }
+                    }
+                });
+                closeBtn.addEventListener('click', closeMenu);
+                overlay.addEventListener('click', closeMenu);
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && panel.classList.contains('open')) closeMenu();
+                });
+            }
+
+            // --- Shape cycling (5 shapes) ---
+            const shapeGroups = document.querySelectorAll('.shape-group');
+            let activeIndex = 0;
+            let intervalId;
+
+            function switchShape(index) {
+                shapeGroups.forEach((group, i) => {
+                    group.classList.toggle('active', i === index);
+                });
+            }
+
+            function startCycle() {
+                switchShape(0);
+                intervalId = setInterval(() => {
+                    activeIndex = (activeIndex + 1) % shapeGroups.length;
+                    switchShape(activeIndex);
+                }, 4000);
+            }
+
+            setTimeout(startCycle, 500);
+
+            // --- Canvas Particle System ---
+            const canvas = document.getElementById('particles');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let width, height, particles = [];
+                const PARTICLE_COUNT = 120;
+
+                function resizeCanvas() {
+                    width = canvas.width = window.innerWidth;
+                    height = canvas.height = window.innerHeight;
+                }
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * width;
+                        this.y = Math.random() * height;
+                        this.radius = Math.random() * 2 + 0.5;
+                        this.speedX = (Math.random() - 0.5) * 0.35;
+                        this.speedY = (Math.random() - 0.5) * 0.35;
+                        this.opacity = Math.random() * 0.5 + 0.2;
+                    }
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        if (this.x < 0 || this.x > width) this.speedX *= -1;
+                        if (this.y < 0 || this.y > height) this.speedY *= -1;
+                    }
+                    draw() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(114,81,164,${this.opacity})`;
+                        ctx.fill();
+                    }
+                }
+
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    particles.push(new Particle());
+                }
+
+                function drawLines() {
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 130) {
+                                const opacity = (1 - dist / 130) * 0.12;
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.strokeStyle = `rgba(114,81,164,${opacity})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                }
+
+                function animateParticles() {
+                    ctx.clearRect(0, 0, width, height);
+                    particles.forEach(p => { p.update();
+                        p.draw(); });
+                    drawLines();
+                    requestAnimationFrame(animateParticles);
+                }
+                animateParticles();
+            }
+
+            // --- Parallax floating ornaments ---
+            const ornaments = document.querySelectorAll('.ornament');
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 25;
+                const y = (e.clientY / window.innerHeight - 0.5) * 25;
+                ornaments.forEach((orn, i) => {
+                    const speed = 0.025 * (i + 1);
+                    orn.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            });
+
+            console.log('Bento Official · Ready');
+        })();
+    </script>
 </body>
 </html>
