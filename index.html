@@ -683,11 +683,15 @@
             gap: 1rem;
             padding: 0.75rem 1rem;
             border-radius: 16px;
-            transition: background 0.2s;
-            cursor: default;
+            transition: background 0.2s, color 0.2s, text-decoration 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--md-on-surface);
         }
         .song-item:hover {
             background: var(--md-surface-container);
+            text-decoration: none;
+            color: var(--md-on-surface);
         }
         .song-item .art {
             width: 48px;
@@ -894,7 +898,7 @@
         </div>
         <div class="side-menu-footer">
             <div class="side-menu-social">
-                <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                <a href="https://open.spotify.com/artist/020OXNgPrEKZjPqgVhz6Vh?si=FwABQ-DxTfO7IpfZXkvlVg" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
                 <a href="#" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
                 <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -942,7 +946,7 @@
                 <div class="social-inline">
                     <span class="label">Connect</span>
                     <div class="social-icons">
-                        <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                        <a href="https://open.spotify.com/artist/020OXNgPrEKZjPqgVhz6Vh?si=FwABQ-DxTfO7IpfZXkvlVg" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
                         <a href="#" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -957,12 +961,15 @@
     <!-- ===== TOP SONGS ===== -->
     <section id="songs">
         <div class="container">
-            <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.8rem); text-align: center; margin-bottom: 2.5rem;">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.8rem); text-align: center; margin-bottom: 0.5rem;">
                 Top Songs
             </h2>
+            <p style="font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--md-on-surface); opacity: 0.6; margin-bottom: 1.5rem; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; padding-left: 0.5rem;">
+                Recents
+            </p>
             <div class="songs-grid">
-                <!-- Song 1 -->
-                <div class="song-item">
+                <!-- Take it down (Single) -->
+                <a href="https://open.spotify.com/track/33HJYcVsFsY4cAndimnvy3?si=w53PV7GFTdWuG9ORADeI5Q" target="_blank" rel="noopener noreferrer" class="song-item">
                     <div class="art" style="background: linear-gradient(135deg, #6C3A8C, #A78BFA);">
                         <i class="fas fa-music" style="opacity: 0.8;"></i>
                     </div>
@@ -971,9 +978,10 @@
                         <div class="sub">Single • Bento official</div>
                     </div>
                     <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                </div>
-                <!-- Song 2 -->
-                <div class="song-item">
+                </a>
+
+                <!-- Am Looking For You (Single) -->
+                <a href="https://open.spotify.com/album/3c5i19JEYjEXfJQ9dBhg99?si=0N7ZHy1pRna9Mm3c7u5KDQ" target="_blank" rel="noopener noreferrer" class="song-item">
                     <div class="art" style="background: linear-gradient(135deg, #2D4A8C, #6C3A8C);">
                         <i class="fas fa-music" style="opacity: 0.8;"></i>
                     </div>
@@ -982,9 +990,10 @@
                         <div class="sub">Single • Bento official</div>
                     </div>
                     <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                </div>
-                <!-- Artist card -->
-                <div class="song-item">
+                </a>
+
+                <!-- Bento official (Artist - Main Account) -->
+                <a href="https://open.spotify.com/artist/020OXNgPrEKZjPqgVhz6Vh?si=FwABQ-DxTfO7IpfZXkvlVg" target="_blank" rel="noopener noreferrer" class="song-item">
                     <div class="art" style="background: linear-gradient(135deg, #8C2D4A, #A78BFA);">
                         <i class="fas fa-user" style="opacity: 0.8;"></i>
                     </div>
@@ -993,18 +1002,7 @@
                         <div class="sub">Artist</div>
                     </div>
                     <div class="play-icon"><i class="fas fa-arrow-right"></i></div>
-                </div>
-                <!-- Song 4: Take it down (Song) -->
-                <div class="song-item">
-                    <div class="art" style="background: linear-gradient(135deg, #4A8C6C, #A78BFA);">
-                        <i class="fas fa-headphones" style="opacity: 0.8;"></i>
-                    </div>
-                    <div class="info">
-                        <div class="title">Take it down</div>
-                        <div class="sub">Song • Bento official</div>
-                    </div>
-                    <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
