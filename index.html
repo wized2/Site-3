@@ -6,10 +6,10 @@
     <meta name="theme-color" content="#7251A4" />
     <title>Bento Official · Singer</title>
 
-    <!-- Favicon (Replace the href with your favicon.svg path) -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <link rel="alternate icon" href="/favicon.png" />
-    <!-- For browsers that support SVG favicon -->
+    <!-- Favicon (PNG) -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,9 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
-        /* =============================================
-                   MATERIAL YOU 3 DARK THEME
-                   ============================================= */
+        /* ===== Variables (Material You 3 Dark) ===== */
         :root {
             --md-primary: #7251A4;
             --md-primary-light: #8B6FC9;
@@ -216,11 +214,11 @@
             letter-spacing: -0.02em;
             text-decoration: none;
         }
-        .logo svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--md-primary);
-            /* Replace this SVG with your favicon.svg if you want */
+        .logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: block;
         }
         .nav-links {
             display: flex;
@@ -331,7 +329,7 @@
             }
         }
 
-        /* ===== Side Menu (Mobile) ===== */
+        /* ===== Side Menu ===== */
         .side-menu-overlay {
             position: fixed;
             inset: 0;
@@ -660,7 +658,7 @@
             opacity: 1;
         }
 
-        /* ===== Top Songs Section ===== */
+        /* ===== Top Songs ===== */
         #songs {
             padding: 40px 0 80px;
             position: relative;
@@ -849,10 +847,7 @@
     <header>
         <div class="nav">
             <a href="#" class="logo">
-                <!-- Replace this SVG with your favicon.svg or keep it as a music note -->
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-                </svg>
+                <img src="/favicon.png" alt="Bento Official" width="32" height="32" />
                 Bento Official
             </a>
             <ul class="nav-links" id="navLinks">
@@ -883,7 +878,7 @@
         </div>
     </header>
 
-    <!-- ===== SIDE MENU (MOBILE) ===== -->
+    <!-- ===== SIDE MENU ===== -->
     <div class="side-menu-overlay" id="sideOverlay"></div>
     <div class="side-menu-panel" id="sidePanel">
         <div class="side-menu-header">
@@ -959,7 +954,7 @@
         </div>
     </section>
 
-    <!-- ===== TOP SONGS SECTION ===== -->
+    <!-- ===== TOP SONGS ===== -->
     <section id="songs">
         <div class="container">
             <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.8rem); text-align: center; margin-bottom: 2.5rem;">
@@ -988,7 +983,7 @@
                     </div>
                     <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                 </div>
-                <!-- Song 3 (Bento official Artist page representation) -->
+                <!-- Artist card -->
                 <div class="song-item">
                     <div class="art" style="background: linear-gradient(135deg, #8C2D4A, #A78BFA);">
                         <i class="fas fa-user" style="opacity: 0.8;"></i>
@@ -999,7 +994,7 @@
                     </div>
                     <div class="play-icon"><i class="fas fa-arrow-right"></i></div>
                 </div>
-                <!-- Song 4 (Repeat of Take it down as Song, keeping it unique) -->
+                <!-- Song 4: Take it down (Song) -->
                 <div class="song-item">
                     <div class="art" style="background: linear-gradient(135deg, #4A8C6C, #A78BFA);">
                         <i class="fas fa-headphones" style="opacity: 0.8;"></i>
@@ -1028,7 +1023,7 @@
         (function() {
             'use strict';
 
-            // --- Theme toggle (segmented) ---
+            // --- Theme toggle ---
             const html = document.documentElement;
             const toggleBtns = document.querySelectorAll('.theme-toggle');
 
@@ -1060,7 +1055,7 @@
                 });
             });
 
-            // --- Mobile nav toggle ---
+            // --- Mobile nav ---
             const navToggle = document.getElementById('navToggle');
             const navLinks = document.getElementById('navLinks');
             if (navToggle) {
@@ -1112,7 +1107,7 @@
                 });
             }
 
-            // --- Shape cycling (5 shapes) ---
+            // --- Shape cycling ---
             const shapeGroups = document.querySelectorAll('.shape-group');
             let activeIndex = 0;
             let intervalId;
@@ -1130,10 +1125,9 @@
                     switchShape(activeIndex);
                 }, 4000);
             }
-
             setTimeout(startCycle, 500);
 
-            // --- Canvas Particle System ---
+            // --- Canvas particles ---
             const canvas = document.getElementById('particles');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
@@ -1203,7 +1197,7 @@
                 animateParticles();
             }
 
-            // --- Parallax floating ornaments ---
+            // --- Parallax ornaments ---
             const ornaments = document.querySelectorAll('.ornament');
             document.addEventListener('mousemove', (e) => {
                 const x = (e.clientX / window.innerWidth - 0.5) * 25;
